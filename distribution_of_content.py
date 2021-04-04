@@ -11,6 +11,8 @@ from streamlit.proto.Markdown_pb2 import Markdown
 # plt.style.use('dark_background')
 
 def app():
+    st.title("Distribution of the content on Netflix")
+
     df = pd.read_csv('archive/netflix_titles.csv' )
 
     t1 = df.type.value_counts()
@@ -117,20 +119,19 @@ def app():
                     showlegend = False)
                     
     st.plotly_chart(fig)
+    st.write("The above trend of the most popular genre topped by drama, followed by comedy can be explained by the audience Netflix actively seeks which are the adults and young adults age group. Drama encompasses a variety of mediums from TV shows to anime and can be an mentally immersive experience with disparate themes, riveting storytelling and cultural exposure. ")
+    st.write("The second spot is taken by comedy at around 26% which can serve as a cleansing thought freshner and a departure from the harsh realities of life. Another good reason for its popularity is that this genre can be enjoyed by a large variety of audience from all age groups.")
+    st.write("Both of these genres can be curated to celebrate a specific season, holiday or even person. Adventure and action and documentaries are next on the list and require more dedication both financially and manually to prepare and usually target a more compact audience. ")
+    st.write("Lastly, thrillers, horror movies and fantasy shows are season specific and need a longer time to estalish a connect with its intended audiences. Most of the projects in these categories are an attempt to remake past movies and shows and enjoy a lesser appreciation than its former counterparts. ")
     
 
     
     fig = plt.figure(figsize=(15,7))
     sns.countplot(y='rating', data=df, order=df.rating.value_counts().index.to_list(), color='Blue')
-    plt.title('Overall Distribution of Ratings', fontsize=24, fontweight='bold');
+    plt.title('Overall Distribution of Ratings', fontsize=24);
     st.pyplot(fig)
     
-    #Type - rating 
-    fig = plt.figure(figsize = (15,7))
-    sns.countplot(x='rating',data = df,hue='type',palette='bright')
-    plt.xlabel("Rating")
-    plt.ylabel("Total Count")
-    st.pyplot(fig)
+
     
     df['age_group'] = df['rating']
     MR_age = {'TV-MA': 'Adults',
@@ -155,7 +156,7 @@ def app():
     fig = go.Figure([go.Bar(x=val, y=cnt, marker_color='blue')])
     fig.update_layout(title_text='Age Group Distribution', title_x=0.5)
     st.plotly_chart(fig)
-    st.markdown("### The graph illustrates the age demographic that consumes Netflix content and adults make up about 46 percent of all users followed by young adults at 24 percent. This result is also in accordance with the popularity and production trend in content on Netflix with the likes of mature, outlandish and bold projects that were traditionally avoided and looked down upon.")
+    st.markdown(" The graph illustrates the age demographic that consumes Netflix content and adults make up about 46 percent of all users followed by young adults at 24 percent. This result is also in accordance with the popularity and production trend in content on Netflix with the likes of mature, outlandish and bold projects that were traditionally avoided and looked down upon.")
 
     df['country'] = df['country'].fillna('Other')
     df['country'].isna().sum()
@@ -170,7 +171,7 @@ def app():
     sns.barplot(x='main_country', y='type', data=most_country,palette='Set1')
     plt.ylabel('TV and Movies')
     plt.xlabel('Country')
-    plt.title("Country wise count of Shows and Movies production (top 10)",fontsize = 15)
+    plt.title("Country wise count of Shows and Movies production (top 10)",fontsize = 24)
     st.pyplot(fig)
     st.write("USA is home to Netflix and has the largest content library. From its initial start as a movie rental company that eliminated various restrictions on users like late fees and physical pickups, it picked up pace in 2007 when it began online streaming, garnering more customers every day. ")
     st.write("In India, Netflix competes with the likes of Disney, Amazon, Hotstar and over 30 additional services. Thanks to Reliance Jio and its cheap data plans, India went from being one of the world’s most expensive data regimes to the most inexpensive in just four years. Unlike Americans and Europeans, a large chunk of Indians consume content on mobile devices. To reach these consumers, Netflix launched a mobile-only subscription plan at ₹199 a month, far cheaper than its standard plan, in 2019. On the back end, it had to adjust the bit rate of videos based on factors such as the speed of the Internet connection and the device to ensure a seamless experience. Netflix uped its game by creating regional content with local talent producing Emmy winner Delhi Crime andd crowd pleasing Sacred Games. Furthermore, Netflix has also forged strategic partnerships with telecom major Reliance Jio, Internet service providers such as Hathway and ACT Fibernet, and device brands like Samsung, OnePlus, and Mi to reach the almost 500 million smartphone users.")

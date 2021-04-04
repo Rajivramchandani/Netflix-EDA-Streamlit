@@ -11,7 +11,8 @@ stop_words= stopwords.words('english')
 
 
 def app():
-    
+    st.title("Recommendation model using Cosine Similarity")
+
     df = pd.read_csv('archive/netflix_titles.csv')
 
     df['cast']=df['cast'].fillna('Unknown')
