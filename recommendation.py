@@ -54,7 +54,7 @@ def app():
         except:
             st.write('No such movie found')
         
-    user_input = st.text_input("label goes here",)
+    user_input = st.text_input("Enter Movie / Tv show Title",)
     st.write("Recommendations: ")
     if (user_input):
      get_recommendations(user_input)

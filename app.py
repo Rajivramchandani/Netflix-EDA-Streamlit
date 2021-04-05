@@ -17,7 +17,7 @@ PAGES = {
 
 
 def main():
-    st.sidebar.title("BDA Visualization Assignment")
+    st.sidebar.title("Netflix EDA")
     menu_selection = st.sidebar.radio("Browse Topics:", list(PAGES.keys()))
 
     menu = PAGES[menu_selection]
@@ -27,8 +27,8 @@ def main():
 
 
     st.sidebar.info("Made by :" )
-    st.sidebar.info("Rajiv Ramchandani Prn:17070122053" )
-    st.sidebar.info(" Riya Chaudhary Prn:17070122056" )
+    st.sidebar.info("Rajiv Ramchandani" )
+    st.sidebar.info("Riya Chaudhary" )
 
 
 

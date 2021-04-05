@@ -23,7 +23,7 @@ def app():
                 labels=t1.index, 
                 text=t1.index,
                 )
-    fig.update_layout(title={'text':'Movie vs TV Show: Pie Chart',},
+    fig.update_layout(title={'text':'Movie vs TV Shows',},
                     font_size=18)
     st.plotly_chart(fig)
     
